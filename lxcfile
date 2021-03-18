@@ -1,0 +1,3 @@
+name=uefa-euro-20
+template=focal
+mount=.:/var/www/uefa-euro-20

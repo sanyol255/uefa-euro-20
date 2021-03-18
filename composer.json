@@ -1,0 +1,118 @@
+{
+    "name": "magento/project-community-edition",
+    "description": "eCommerce Platform for Growth (Community Edition)",
+    "type": "project",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4.3",
+            "ext-bcmath": "1",
+            "ext-ctype": "1",
+            "ext-gd": "1",
+            "ext-spl": "1",
+            "ext-dom": "1",
+            "ext-simplexml": "1",
+            "ext-hash": "1",
+            "ext-curl": "1",
+            "ext-iconv": "1",
+            "ext-intl": "1",
+            "ext-xsl": "1",
+            "ext-mbstring": "1",
+            "ext-openssl": "1",
+            "ext-zip": "1",
+            "ext-pdo_mysql": "1",
+            "ext-soap": "1",
+            "ext-xml": "1",
+            "ext-xmlwriter": "1"
+        }
+    },
+    "version": "2.4.2",
+    "require": {
+        "magento/composer-root-update-plugin": "~1.1",
+        "magento/product-community-edition": "2.4.2",
+        "smile/module-cron": "^5.0",
+        "smile/module-indexer": "^4.0",
+        "smile/module-patch": "^1.0",
+        "smile/module-reconfigure": "^5.0",
+        "smile/module-varnish": "^4.0"
+    },
+    "autoload": {
+        "exclude-from-classmap": [
+            "**/dev/**",
+            "**/update/**",
+            "**/Test/**"
+        ],
+        "files": [
+            "app/etc/NonComposerComponentRegistration.php"
+        ],
+        "psr-0": {
+            "": [
+                "app/code/",
+                "generated/code/"
+            ]
+        },
+        "psr-4": {
+            "Magento\\": "app/code/Magento/",
+            "Magento\\Framework\\": "lib/internal/Magento/Framework/",
+            "Magento\\Setup\\": "setup/src/Magento/Setup/",
+            "Zend\\Mvc\\Controller\\": "setup/src/Zend/Mvc/Controller/"
+        }
+    },
+    "require-dev": {
+        "allure-framework/allure-phpunit": "~1.2.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "friendsofphp/php-cs-fixer": "~2.16.0",
+        "lusitanian/oauth": "~0.8.10",
+        "magento/magento-coding-standard": "*",
+        "magento/magento2-functional-testing-framework": "^3.0",
+        "pdepend/pdepend": "~2.7.1",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpmd/phpmd": "^2.8.0",
+        "phpstan/phpstan": ">=0.12.3 <=0.12.23",
+        "phpunit/phpunit": "^9",
+        "sebastian/phpcpd": "~5.0.0",
+        "smile-sa/smileanalyser": "^7.0",
+        "smile/module-debug-toolbar": "^4.0",
+        "smile/php-codesniffer-rules-magento-2": "^3.0",
+        "smile/php-md-rules": "^2.0",
+        "smile/spbuilder-shim": "^5.0",
+        "squizlabs/php_codesniffer": "~3.5.4"
+    },
+    "conflict": {
+        "gene/bluefoot": "*"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magento\\PhpStan\\": "dev/tests/static/framework/Magento/PhpStan/",
+            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/",
+            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": {
+        "magento_mirror": {
+            "type": "composer",
+            "url": "https://packagist.galaxy.intranet/mirror/magento_official/"
+        },
+        "smile_libraries": {
+            "type": "composer",
+            "url": "https://packagist.galaxy.intranet/libraries/"
+        },
+        "smile_magento2": {
+            "type": "composer",
+            "url": "https://packagist.galaxy.intranet/magento2/"
+        }
+    },
+    "extra": {
+        "magento-force": "override"
+    }
+}

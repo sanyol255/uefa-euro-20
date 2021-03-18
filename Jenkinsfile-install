@@ -1,0 +1,59 @@
+pipeline {
+  agent {
+    node {
+      label 'php73'
+    }
+  }
+  stages {
+    stage('Composer Install') {
+      steps {
+        sh 'composer install --prefer-dist --no-interaction'
+        sh 'composer dumpautoload --no-interaction'
+      }
+    }
+    stage('Package') {
+      steps {
+        sshagent (credentials: ['jenkins-private-key']) {
+          sh './vendor/bin/spbuilder package --force-name="[git_group_name]-[git_project_name]" --force-version="${BUILD_TAG}"'
+        }
+      }
+    }
+    stage('Provision') {
+      steps {
+        sshagent (credentials: ['jenkins-private-key']) {
+          sh './scripts/provision.sh inte'
+        }
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sshagent (credentials: ['jenkins-private-key']) {
+          sh './scripts/deploy.sh inte -p "${BUILD_TAG}" -f'
+        }
+      }
+    }
+    stage('Install') {
+      steps {
+        sshagent (credentials: ['jenkins-private-key']) {
+          sh './scripts/permissions.sh        inte'
+          sh './scripts/install.sh            inte --force'
+          sh './scripts/set-cron.sh           inte disable'
+          sh './scripts/setup-upgrade.sh      inte'
+          sh './scripts/magento.sh            inte smilereconfigure:apply-conf inte'
+          sh './scripts/cache-clean.sh        inte'
+          sh './scripts/magento.sh            inte indexer:reindex'
+          sh './scripts/cache-clean.sh        inte'
+          sh './scripts/generate-static-di.sh inte'
+          sh './scripts/set-cron.sh           inte enable'
+        }
+      }
+    }
+    stage('Clean Workspace') {
+      steps {
+        sh 'rm -rf ./build/dist'
+        sh 'rm -rf ./pub'
+        sh 'rm -rf ./vendor'
+      }
+    }
+  }
+}
