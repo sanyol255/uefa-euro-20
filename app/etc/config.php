@@ -329,6 +329,7 @@ return [
         'Smile_Reconfigure' => 1,
         'Smile_Varnish' => 1,
         'Temando_ShippingRemover' => 1,
+        'UefaEuro_InitialEvents' => 1,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidationApi' => 1,
         'Vertex_AddressValidation' => 1,

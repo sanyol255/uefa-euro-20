@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * InitialEvents module declaration
+ *
+ * @author Oleksandr Kovalchuk <oleksandr.kovalchuk@smile-ukraine.com>
+ * @copyright 2021 Smile
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="UefaEuro_InitialEvents" setup_version = "1.0.0" />
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * Layout for Uefa Euro schedule page
+ *
+ * @author Oleksandr Kovalchuk <oleksandr.kovalchuk@smile-ukraine.com>
+ * @copyright 2021 Smile
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Uefa Euro 2020 Schedule</title>
+    </head>
+    <body>
+    <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+    <referenceBlock name="wishlist_sidebar" remove="true" />
+    <referenceContainer name="content">
+        <block class="UefaEuro\InitialEvents\Block\Schedule" name="uefa_euro_schedule"
+               template="UefaEuro_InitialEvents::schedule.phtml" />
+    </referenceContainer>
+    </body>
+</page>
